@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "about rocknrollers"
+title: "about"
 description: "who are rocknrollers?"
 header-img: "img/about-bg.jpg"
 photo-source: "https://www.flickr.com/photos/nolnet/6137890252"

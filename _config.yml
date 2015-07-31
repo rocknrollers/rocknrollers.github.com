@@ -3,7 +3,7 @@ title: rocknrollers international
 header-img: img/home-bg.jpg
 email: joshanderson@rti.org
 description: "informal show and tell time"
-baseurl: "http://rocknrollers.international"
+baseurl: ""
 url: "http://rocknrollers.international"
 twitter_username: rocknrockers
 github_username:  rocknrollers
@@ -12,5 +12,5 @@ github_username:  rocknrollers
 markdown: kramdown
 highlighter: pygments
 permalink: pretty
-paginate: 10
+paginate: 20
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]

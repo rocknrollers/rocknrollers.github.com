@@ -1,6 +1,6 @@
 ---
 layout: page
-title: how to participate
+title: participate
 permalink: /participate/
 header-img: "img/about-bg.jpg"
 photo-source: "https://www.flickr.com/photos/nolnet/6137890252"
