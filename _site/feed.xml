@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rocknrollers international</title>
+    <description>informal show and tell time</description>
+    <link>http://rocknrollers.international/</link>
+    <atom:link href="http://rocknrollers.international/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 31 Jul 2015 12:26:10 -0400</pubDate>
+    <lastBuildDate>Fri, 31 Jul 2015 12:26:10 -0400</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Schedule update</title>
+        <description>
+</description>
+        <pubDate>Mon, 01 Jun 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/06/01/schedule-update/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/06/01/schedule-update/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>josh-sinatra-i18n-daybreak</title>
+        <description>&lt;p&gt;This will mark our 10th session. Thank you rocknrollers for always pitching in and rocking out.&lt;/p&gt;
+
+&lt;p&gt;In other news, Adam is being awarded with a hall of fame badge. He is being promoted to Mick Jagger. Remember, with great power comes great responsibility.&lt;/p&gt;
+
+&lt;p&gt;Really quickly&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://i18next.com/&quot;&gt;18next&lt;/a&gt; - simple javascript library for translating your ui. Very flexible and very minimalist. When you look at the feature list and examples you’ll feel very confident that it will handle whatever language you can throw at it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://sinatrarb.com&quot;&gt;sinatra&lt;/a&gt; - micro-framework for Ruby.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://propublica.github.io/daybreak/&quot;&gt;daybreak&lt;/a&gt; - impressive little keystore database.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For this quick Sinatra demo we created a backend to handle bit.ly type requests. In English, if a submitted url is known, provide the token, shortened url, othewise, save the url and provide a random token. If a get request is made to a known token, then redirect. Easy peasy lemon squeezy.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;daybreak&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sinatra/base&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;vg&quot;&gt;$db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Daybreak&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;url.db&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;random_string&lt;/span&gt; 
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Z&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UrlApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/shorten&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_string&lt;/span&gt;
+    
+    &lt;span class=&quot;vg&quot;&gt;$db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/:token&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$db&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 22 May 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/05/22/josh-rat-pack/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/05/22/josh-rat-pack/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>mike-coconut</title>
+        <description>&lt;p&gt;Thanks to Mike for providing his notes and slides. Mike walked us through some work he’s done lately with offline apps. Really great stuff, Mike!&lt;/p&gt;
+
+&lt;h1 id=&quot;agenda&quot;&gt;Agenda&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gooseberry&lt;/li&gt;
+  &lt;li&gt;Coconut&lt;/li&gt;
+  &lt;li&gt;Offline Apps&lt;/li&gt;
+  &lt;li&gt;Blockspring&lt;/li&gt;
+  &lt;li&gt;Dropbox SDK&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;gooseberry&quot;&gt;Gooseberry&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Collect Data via Interactive SMS&lt;/li&gt;
+  &lt;li&gt;Ruby Sinatra + CouchDB&lt;/li&gt;
+  &lt;li&gt;Zanzibar: Health Clinics report new Malaria Cases&lt;/li&gt;
+  &lt;li&gt;Kenya: Registers attendees eventually sends them money&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img width=&quot;200%&quot; src=&quot;http://dl.dropbox.com/u/18491046/Selection_001.png&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img width=&quot;200%&quot; src=&quot;http://dl.dropbox.com/u/18491046/Selection_003.png&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;coconut&quot;&gt;Coconut&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Beyond Collecting Data&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;architecture&quot;&gt;Architecture&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML5 Cloud Backed Offline Application&lt;/li&gt;
+  &lt;li&gt;CouchDB in the Cloud (HTTP Server, NOSQL Database)&lt;/li&gt;
+  &lt;li&gt;PouchDB (used to be CouchDB) on the client&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;normal-html-5-app&quot;&gt;Normal HTML 5 App&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Backbone for MVC&lt;/li&gt;
+  &lt;li&gt;JQuery Mobile for layout&lt;/li&gt;
+  &lt;li&gt;Data Collection in the field
+    &lt;ul&gt;
+      &lt;li&gt;PouchDB for local storage and cloud syncing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Data Reporting from the cloud
+    &lt;ul&gt;
+      &lt;li&gt;CouchDB (sometimes a bit of Ruby too)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;coconut-data-structures&quot;&gt;Coconut Data Structures&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All Data are JSON documents&lt;/li&gt;
+  &lt;li&gt;Data are mostly Questions or Results&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;questions&quot;&gt;Questions&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Household&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;questions&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;531&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Malaria Case ID&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},{&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;401&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Head of Household Name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;autocomplete from previous entries&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;autocomplete-options&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;window.ShehiaOptions = GeoHierarchy.allUniqueShehiaNames()&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;398&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Shehia&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;repeatable&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;autocomplete from code&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;validation&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;($(&amp;#39;#398&amp;#39;).val(&amp;#39;&amp;#39;);return &amp;#39;Shehia &amp;#39; + value + &amp;#39; is not valid. Please try again.&amp;#39; ) unless _.contains(window.ShehiaOptions, value)&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;results&quot;&gt;Results&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;a50615950003474e6f749b3b2000049b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;_rev&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;19-7a75c672aeccc1a13b289586bf1e557b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;createdAt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2012-01-03 23:59:46&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;lastModifiedAt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2012-01-04T00:04:26+00:00&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;question&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Facility&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;MalariaCaseID&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1016807&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;FacilityName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;KIJINI&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Shehia&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;KIJINI 1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0773922266&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;collection&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;a50615950003474e6f749b3b2000049b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;_rev&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;19-7a75c672aeccc1a13b289586bf1e557b&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;createdAt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2012-01-03 23:59:46&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;lastModifiedAt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2012-01-04T00:04:26+00:00&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;question&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Facility&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;MalariaCaseID&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;106807&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;FacilityName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;KIJINI&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Shehia&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;KIJINI 1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0773922266&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;collection&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;DateofPositiveResults&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2015-03-26&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;ParasiteSpecies&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;PF&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;ReferenceinOPDRegister&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;9999&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;FirstName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;kombo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;MiddleName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;faki&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;LastName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;mcha&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Age&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;25&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Village&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;zingani&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;ShehaMjumbe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;hassamn mcha&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;HeadofHouseholdName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;kombo faki mcha&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;ContactMobilepatientrelative&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;9999&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;TreatmentGiven&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;act&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;IfYESlistALLplacestravelled&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;CaseIDforotherhouseholdmemberthattestedpositiveatahealthfacility&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;CommentRemarks&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;complete&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;savedBy&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0773922266&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;AgeinMonthsorYears&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Years&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Sex&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Male&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;TravelledOvernightinpastmonth&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;No&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;Hassomeonefromthesamehouseholdrecentlytestedpositiveatahealthfacility&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;No&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;offline-apps&quot;&gt;Offline Apps&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add a file called manifest.appcache at the root of your web application
+    &lt;ul&gt;
+      &lt;li&gt;A request for any of the URLS will start by trying to get the manifest.appcache&lt;/li&gt;
+      &lt;li&gt;FAILS =&amp;gt;  cached version used.&lt;/li&gt;
+      &lt;li&gt;SUCCEEDS and manifest.appcache file SAME =&amp;gt; cached version  used.&lt;/li&gt;
+      &lt;li&gt;SUCCEEDS and manifest.appcache file DIFFERENT =&amp;gt; everything is reloaded&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Another member of the group piped up. “Hi, I’m ApplicationCache,” he said, as he reached over to shake Dev’s hand. “I turn your offline experience from sucks-ass, to success. Just one extra file, and bosh! It works. No fuss, no ‘scripting’ necessary.” Yes, he did finger-quotes while saying ‘scripting.’ I’m gritting my teeth at this point, because I know he’s greatly exaggerating his abilities and the others don’t see it. However, if I call “bullshit” on it I’ll seem like the jerk.&lt;/p&gt;
+
+&lt;p&gt;I felt bad for not doing anything on that completely real evening. It’s painful to see articles that praise ApplicationCache’s ease of use, written by people who’ve clearly only met him in passing. I must set the record straight: I’m here to tell you ApplicationCache is a douchebag.&lt;/p&gt;
+
+&lt;p&gt;Now, I don’t mean he’s useless or should be avoided, you just have to be very careful when and how you work with him. If you get it wrong, the douchebaggery oozes through onto the end user. By reading through my own painful experiences with AppCache, you’ll know what to expect from AppCache and how to deal with it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;httpalistapartcomarticleapplication-cache-is-a-douchebaghttpalistapartcomarticleapplication-cache-is-a-douchebag&quot;&gt;&lt;a href=&quot;http://alistapart.com/article/application-cache-is-a-douchebag&quot;&gt;http://alistapart.com/article/application-cache-is-a-douchebag&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://dl.dropbox.com/u/18491046/Selection_004.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;except this:&lt;/p&gt;
+
+&lt;h1 id=&quot;httpsgithubcomgr2mappcache-nannyhttpsgithubcomgr2mappcache-nanny&quot;&gt;&lt;a href=&quot;https://github.com/gr2m/appcache-nanny&quot;&gt;https://github.com/gr2m/appcache-nanny&lt;/a&gt;&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;CACHE MANIFEST
+/
+/js/app.min.js
+/js/libs.min.js
+/css/style.min.css
+/index.html
+
+NETWORK:
+*
+http://*
+
+FALLBACK:
+/ /
+&lt;span class=&quot;c&quot;&gt;# VERSION 5asd1s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;apple-mobile-web-app-capable&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;mobile-web-app-capable&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Coconut&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;vision&quot;&gt;Vision&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deployment Script with Docker&lt;/li&gt;
+  &lt;li&gt;Merge question format of Gooseberry/Coconut&lt;/li&gt;
+  &lt;li&gt;Enable data capture for any Coconut form via SMS or Tablet&lt;/li&gt;
+  &lt;li&gt;UI Refactor
+    &lt;ul&gt;
+      &lt;li&gt;Fork server side reporting and client side data collection UI&lt;/li&gt;
+      &lt;li&gt;Strip out JQuery Mobile&lt;/li&gt;
+      &lt;li&gt;Use a bootstrap template&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Consider Elastic Search and Kibana as new basis for reporting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;blockspring&quot;&gt;Blockspring&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=UD3a_Eqj5ew&quot;&gt;https://www.youtube.com/watch?v=UD3a_Eqj5ew&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;dropbox-sdk&quot;&gt;Dropbox SDK&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bHKasfYaEVYvAAANotRealTokenSoDontTryItOKkOBOeB1J3A5D2I0tQsIyg&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dropbox_client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DropboxClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;access_token&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;csvs_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;question_set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;QuestionSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;question_set&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csv_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;--&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.csv&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;question_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv_header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;question_set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;start_date&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csv_required&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;end_date&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;dropbox_client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put_file&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+</description>
+        <pubDate>Fri, 15 May 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/05/15/mike-coconut/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/05/15/mike-coconut/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>adam-elk</title>
+        <description>&lt;h1 id=&quot;elastic-search-logstash-kibana&quot;&gt;Elastic search, Logstash, Kibana&lt;/h1&gt;
+
+&lt;p&gt;Thanks to Adam for a great and informative introduction into the world of the ELK stack for reporting.&lt;/p&gt;
+
+&lt;p&gt;The jist of it is this:&lt;/p&gt;
+
+&lt;p&gt;Elastic Search is a document oriented database. What makes it different from MongoDB or CouchDB is that it supports a wide variety of queries that make it easier to work with and it does so very quickly.&lt;/p&gt;
+
+&lt;p&gt;Logstash at its heart is a text manipulation tool designed to consoliate log files on a server and combine them into a common format that makes sense for your purposes.&lt;/p&gt;
+
+&lt;p&gt;Kibana is a web tool for interfacing with, you guessed it, data generated from Logstash.&lt;/p&gt;
+
+&lt;p&gt;Adam walked us through his demo, which was awesome.&lt;/p&gt;
+
+&lt;p&gt;My takeaway was that Kibana is great for getting some prett quick graphs up and running regardless of your data set and database.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 08 May 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/05/08/adam-elk/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/05/08/adam-elk/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>steve-ntd-reports</title>
+        <description>&lt;p&gt;This week Steve kindly walked us through the work he’s been doing on the NTD database system. His component is a rails application that creates reports for a tricky database situation.&lt;/p&gt;
+
+&lt;p&gt;While he was explaining I had to google the following things and learned quite a bit.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://mmonit.com/monit/&quot;&gt;monit&lt;/a&gt;
+Great tool for monitoring processes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Pivot_table&quot;&gt;Pivot tables&lt;/a&gt;
+Way to aggregate data by columns.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.jquery-steps.com/&quot;&gt;jQuery Steps&lt;/a&gt;
+Plugin for making wizards.&lt;/p&gt;
+
+&lt;p&gt;Steve also talked about the difficulty of having a main application (drupal based) communicate with a secondary application (in rails) and juggle the authentication between the two of them.&lt;/p&gt;
+
+&lt;p&gt;The solution goes a little something like this&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;An authenticated user on drupal has a link that contains an encrypted string, a “multipass token” at the end. The password to decrypt the token lives on the drupal server and on the rails server, so even though the user gets a link that looks like newserver.com/login/adASDadaDAsdas no one can tell what’s in the data. The string actually contains all the user’s information that the rails app needs to do it’s job.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next the rails server gets the request with the token and attempts to decrypt it. If it successfully decrypts, and decrypts into a valid predetermined structure, then it’s considered a valid user created by the drupal server. Voila!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The solution here was surprisingly simple and breathtakingly pragmatic, like most good solutions, I find. Steve says he learned the idea from EasyBI, another tool we’ve used in the past.&lt;/p&gt;
+
+&lt;p&gt;Please let me know if I left out anything cool.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 May 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/05/01/steve-ntd-reports/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/05/01/steve-ntd-reports/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>matt-generators</title>
+        <description>&lt;p&gt;Write up coming soon!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 10 Apr 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/04/10/matt-generators/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/04/10/matt-generators/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>josh-go</title>
+        <description>&lt;p&gt;tl;dr It’s kinda like c, but newer and cooler.&lt;/p&gt;
+
+&lt;p&gt;I wanted to share what I’ve learned so far about Go, there are many resources that explain Go more eloquently and learnedly than I can, but if you’ve never heard about Go (or golang as it’s sometimes called) or just wanted to know more then I hope this helps point you in the right direction.&lt;/p&gt;
+
+&lt;p&gt;I’d like to first give you a quick overview of the language and then give you some of my impressions.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-overview&quot;&gt;Quick overview&lt;/h2&gt;
+
+&lt;p&gt;Go was started at Google in 2007 by Robert Griesemer, Rob Pike and Ken. They wanted a language with modern features (e.g. garbage collection and concurrency), but they also wanted to leave out some modern features (e.g. inheritance, dynamic typing, overloading, generics) that they felt caused programs to become unmaintainable and needlessly complex. Its first public release was in 2009 and Google has since expanded features and the standard library. At the time or writing the current version is 1.4.2 and githut.info shows 22k active repos on Github.&lt;/p&gt;
+
+&lt;p&gt;In explaining why I like Go, I find myself not sounding very sexy, and for good reason. Go is a collection of ideas about programming and software development that are mostly not new. They’re not dangerous and easy, but rather, they’re utterly safe and reliable. Indeed, if JavaScript and C++ are Porche and Lambourgini then Go is most definitely a Volvo. It should be noted that my dream family vehicle is a hybrid Volvo SUV.
+In no particular order&lt;/p&gt;
+
+&lt;h2 id=&quot;idioms&quot;&gt;Idioms&lt;/h2&gt;
+
+&lt;p&gt;An idiom is a convention followed by the users of the language, not a part of the language itself. Go has a large standard library written in “idiomatic Go” as termed by the Go community. It follows conventions that allow for common tasks in any programming language to be accomplished using the tools Go provides.&lt;/p&gt;
+
+&lt;h2 id=&quot;functions&quot;&gt;Functions&lt;/h2&gt;
+
+&lt;p&gt;You can write them, pass them, return them, assign them, array them, name them, don’t name them and send them through a channel to solve some really interesting concurrency requirements.&lt;/p&gt;
+
+&lt;h2 id=&quot;concurrency&quot;&gt;Concurrency&lt;/h2&gt;
+
+&lt;p&gt;This part is actually pretty sexy. Go’s manages interactions between concurrent processes based on ideas put forth in Tony Hoare’s 2004 Communicating Sequential Processes. The book outlines methods for modeling interactions between processes, grouping them together as interacting systems and uses lots of math. I choose to regard these proofs as self evident and continue learning the parts that make sense.&lt;/p&gt;
+
+&lt;h2 id=&quot;style&quot;&gt;Style&lt;/h2&gt;
+
+&lt;p&gt;Go’s style is mostly unambiguous. For the majority of cases there is only one correct way to align variables, to indent lines, insert new lines and to place spaces before or after parens. Go comes with a tool called gofmt (go format) which ensures that go code the world over looks the same, letting programmers concentrate on the meat of the program.&lt;/p&gt;
+
+&lt;h2 id=&quot;errors&quot;&gt;Errors&lt;/h2&gt;
+
+&lt;p&gt;In a lot of languages, less critical errors are called exceptions and give rise to constructs like try, catch, finally or begin, rescue, ensure. Go saves on this overhead and instead, errors are handled explicitly, often in the following idiomatic way.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-go&quot; data-lang=&quot;go&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// The function DoSomething always returns two values, the intended output and an error.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;packageName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DoSomething&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Fatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Angels&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ministers&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grace&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defend&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;us&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Handling errors as though we expected them to happen is a strong statement about Go philosophy. It says “stuff happens, it should be handled.”&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;p&gt;The standard library comes with a package that allows you to write tests for your code. They can be as simple or as complex as you like, they only require that you import the package, and follow some naming conventions when it comes to the testing functions and file names containing the code. Using the command &lt;code&gt;go test&lt;/code&gt; will look for those files and execute them.&lt;/p&gt;
+
+&lt;h2 id=&quot;developing&quot;&gt;Developing&lt;/h2&gt;
+
+&lt;p&gt;When you install Go, you also get a code compiler you get a few tools in with the mix. &lt;code&gt;gofmt&lt;/code&gt; beautifys your code, &lt;code&gt;go get&lt;/code&gt; grabs packages from the web, &lt;code&gt;go test&lt;/code&gt; runs your unit tests, and go fix will actually take code that you wrote for an older API and convert it into code that works with the newer API.&lt;/p&gt;
+
+&lt;h2 id=&quot;packages&quot;&gt;Packages&lt;/h2&gt;
+
+&lt;p&gt;Go doesn’t have any dynamic linking, so everything must be compiled into one executable. This means a directory structure that is well defined that allows for well organized packages and libraries. As a result go can download and install packages and dependencies with a simple command &lt;code&gt;go get github.com/lib/pg&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;should-your-team-use-go&quot;&gt;Should your team use Go?&lt;/h2&gt;
+
+&lt;p&gt;I’m a pragmatist. I believe you should use whatever gets the job done, as long as you define your job well and define what your job isn’t you should be good.
+If you need a web service that runs fast and you like explicit, non-magical code then you should definitely use Go.&lt;/p&gt;
+
+&lt;h2 id=&quot;projects-using-go&quot;&gt;Projects using Go&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bit.ly/&quot;&gt;Bitly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://soundcloud.com/&quot;&gt;SoundCloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://gohugo.io/&quot;&gt;Hugo - static site generator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://github.com/fogleman/nes&quot;&gt;NES emulator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;more-resources&quot;&gt;More resources&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://golang.org/&quot;&gt;http://golang.org/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Go_(programming_language)&quot;&gt;https://en.wikipedia.org/wiki/Go_(programming_language)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gobyexample.com/&quot;&gt;https://gobyexample.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://golang.org/doc/effective_go.html&quot;&gt;https://golang.org/doc/effective_go.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.metacasts.tv/&quot;&gt;http://www.metacasts.tv/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://go-database-sql.org/&quot;&gt;http://go-database-sql.org/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/a8m/go-lang-cheat-sheet&quot;&gt;https://github.com/a8m/go-lang-cheat-sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://play.golang.org/&quot;&gt;https://play.golang.org/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/DisposaBoy/GoSublime&quot;&gt;https://github.com/DisposaBoy/GoSublime&lt;/a&gt; - Sublime plugin&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 04 Apr 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/04/04/josh-go/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/04/04/josh-go/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>adam-flask</title>
+        <description>&lt;p&gt;Adam’s been using python a lot lately so that’s what we talked about.&lt;/p&gt;
+
+&lt;p&gt;Python’s used a lot in data sciences. Why is that exactly? A lot of it is momentum. Ruby and Python are very similar, but also very different. Ruby was designed from the ground up to be a fun experience. The community encourages you to extend basic objects like String and write your own DSL. Python, not so much, there is the “Python way” to do things. It’s easy to see how that would appeal to an academic or a data scientist.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://ipython.org/notebook.html&quot;&gt;iPython notebook&lt;/a&gt; is a playground for python. It lets you share code snippets and play with them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://flask.pocoo.org/&quot;&gt;Flask&lt;/a&gt; a microframework for creating web services. In Ruby you have Sinatra, in Javascript you have Express, but this is Flask for Python.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 27 Mar 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/03/27/adam-flask/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/03/27/adam-flask/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>adam-docker</title>
+        <description>&lt;p&gt;Docker is like chef and vagrant. It helps you set up servers. But unlike chef and vagrant, It doesn’t use virtual machines to do it. Less overhead means faster servers.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/&quot;&gt;Dockerhub&lt;/a&gt; - Lots of repos with containerized versions of your favorite server software.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Keeping things compartmentalized with Docker will force you to truly decouple your software, and give you reliable deployments.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Mar 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/03/27/adam-docker/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/03/27/adam-docker/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>josh-app-template</title>
+        <description>&lt;p&gt;Write up coming soon!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Mar 2015 11:00:00 -0400</pubDate>
+        <link>http://rocknrollers.international/2015/03/20/josh-app-template/</link>
+        <guid isPermaLink="true">http://rocknrollers.international/2015/03/20/josh-app-template/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

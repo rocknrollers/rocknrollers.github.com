@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="informal show and tell time">
+
+    <title>mike-coconut - rocknrollers international</title>
+
+    <link rel="canonical" href="http://rocknrollers.international/2015/05/15/mike-coconut/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rocknrollers international</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/schedule/">schedule</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">about</a>
+                </li>
+                
+                <li>
+                    <a href="/participate/">participate</a>
+                </li>
+                
+                <li>
+                    <a href="/hall-of-fame/">hall of fame</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-07.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>mike-coconut</h1>
+                    
+                    <h2 class="subheading">Offline apps</h2>
+                    
+                    <span class="meta">Posted by rocknrollers on May 15, 2015</span>
+                </div>
+            </div>
+        </div>
+        <span>
+            <a href='https://www.flickr.com/photos/pierre_pouliquin/143762891'>photo source</a>
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>Thanks to Mike for providing his notes and slides. Mike walked us through some work he’s done lately with offline apps. Really great stuff, Mike!</p>
+
+<h1 id="agenda">Agenda</h1>
+
+<ul>
+  <li>Gooseberry</li>
+  <li>Coconut</li>
+  <li>Offline Apps</li>
+  <li>Blockspring</li>
+  <li>Dropbox SDK</li>
+</ul>
+
+<hr />
+
+<h1 id="gooseberry">Gooseberry</h1>
+
+<ul>
+  <li>Collect Data via Interactive SMS</li>
+  <li>Ruby Sinatra + CouchDB</li>
+  <li>Zanzibar: Health Clinics report new Malaria Cases</li>
+  <li>Kenya: Registers attendees eventually sends them money</li>
+</ul>
+
+<hr />
+
+<p><img width="200%" src="http://dl.dropbox.com/u/18491046/Selection_001.png" /></p>
+
+<hr />
+
+<p><img width="200%" src="http://dl.dropbox.com/u/18491046/Selection_003.png" /></p>
+
+<hr />
+
+<h1 id="coconut">Coconut</h1>
+
+<p><em>Beyond Collecting Data</em></p>
+
+<hr />
+
+<h1 id="architecture">Architecture</h1>
+
+<ul>
+  <li>HTML5 Cloud Backed Offline Application</li>
+  <li>CouchDB in the Cloud (HTTP Server, NOSQL Database)</li>
+  <li>PouchDB (used to be CouchDB) on the client</li>
+</ul>
+
+<hr />
+
+<h1 id="normal-html-5-app">Normal HTML 5 App</h1>
+
+<ul>
+  <li>Backbone for MVC</li>
+  <li>JQuery Mobile for layout</li>
+  <li>Data Collection in the field
+    <ul>
+      <li>PouchDB for local storage and cloud syncing</li>
+    </ul>
+  </li>
+  <li>Data Reporting from the cloud
+    <ul>
+      <li>CouchDB (sometimes a bit of Ruby too)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="coconut-data-structures">Coconut Data Structures</h1>
+
+<ul>
+  <li>All Data are JSON documents</li>
+  <li>Data are mostly Questions or Results</li>
+</ul>
+
+<hr />
+
+<h1 id="questions">Questions</h1>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="s2">&quot;_id&quot;</span><span class="err">:</span> <span class="s2">&quot;Household&quot;</span><span class="err">,</span>
+  <span class="s2">&quot;questions&quot;</span><span class="err">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;531&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Malaria Case ID&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span>
+      <span class="p">},{</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;401&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Head of Household Name&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;autocomplete from previous entries&quot;</span>
+      <span class="p">},</span> <span class="p">{</span>
+          <span class="nt">&quot;autocomplete-options&quot;</span><span class="p">:</span> <span class="s2">&quot;window.ShehiaOptions = GeoHierarchy.allUniqueShehiaNames()&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;398&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Shehia&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;repeatable&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;autocomplete from code&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;validation&quot;</span><span class="p">:</span> <span class="s2">&quot;($(&#39;#398&#39;).val(&#39;&#39;);return &#39;Shehia &#39; + value + &#39; is not valid. Please try again.&#39; ) unless _.contains(window.ShehiaOptions, value)&quot;</span>
+      <span class="p">}</span>
+<span class="err">...</span></code></pre></div>
+
+<hr />
+
+<h1 id="results">Results</h1>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;a50615950003474e6f749b3b2000049b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;_rev&quot;</span><span class="p">:</span> <span class="s2">&quot;19-7a75c672aeccc1a13b289586bf1e557b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-01-03 23:59:46&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastModifiedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-01-04T00:04:26+00:00&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Facility&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MalariaCaseID&quot;</span><span class="p">:</span> <span class="s2">&quot;1016807&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;FacilityName&quot;</span><span class="p">:</span> <span class="s2">&quot;KIJINI&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Shehia&quot;</span><span class="p">:</span> <span class="s2">&quot;KIJINI 1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;0773922266&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;collection&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;a50615950003474e6f749b3b2000049b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;_rev&quot;</span><span class="p">:</span> <span class="s2">&quot;19-7a75c672aeccc1a13b289586bf1e557b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;createdAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-01-03 23:59:46&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastModifiedAt&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-01-04T00:04:26+00:00&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Facility&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MalariaCaseID&quot;</span><span class="p">:</span> <span class="s2">&quot;106807&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;FacilityName&quot;</span><span class="p">:</span> <span class="s2">&quot;KIJINI&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Shehia&quot;</span><span class="p">:</span> <span class="s2">&quot;KIJINI 1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;0773922266&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;collection&quot;</span><span class="p">:</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;DateofPositiveResults&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-26&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ParasiteSpecies&quot;</span><span class="p">:</span> <span class="s2">&quot;PF&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ReferenceinOPDRegister&quot;</span><span class="p">:</span> <span class="s2">&quot;9999&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;FirstName&quot;</span><span class="p">:</span> <span class="s2">&quot;kombo&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MiddleName&quot;</span><span class="p">:</span> <span class="s2">&quot;faki&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;LastName&quot;</span><span class="p">:</span> <span class="s2">&quot;mcha&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Age&quot;</span><span class="p">:</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Village&quot;</span><span class="p">:</span> <span class="s2">&quot;zingani&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ShehaMjumbe&quot;</span><span class="p">:</span> <span class="s2">&quot;hassamn mcha&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;HeadofHouseholdName&quot;</span><span class="p">:</span> <span class="s2">&quot;kombo faki mcha&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ContactMobilepatientrelative&quot;</span><span class="p">:</span> <span class="s2">&quot;9999&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TreatmentGiven&quot;</span><span class="p">:</span> <span class="s2">&quot;act&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;IfYESlistALLplacestravelled&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;CaseIDforotherhouseholdmemberthattestedpositiveatahealthfacility&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;CommentRemarks&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;complete&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;savedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;0773922266&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;AgeinMonthsorYears&quot;</span><span class="p">:</span> <span class="s2">&quot;Years&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Sex&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TravelledOvernightinpastmonth&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Hassomeonefromthesamehouseholdrecentlytestedpositiveatahealthfacility&quot;</span><span class="p">:</span> <span class="s2">&quot;No&quot;</span>
+<span class="p">}</span></code></pre></div>
+
+<h1 id="offline-apps">Offline Apps</h1>
+
+<ul>
+  <li>Add a file called manifest.appcache at the root of your web application
+    <ul>
+      <li>A request for any of the URLS will start by trying to get the manifest.appcache</li>
+      <li>FAILS =&gt;  cached version used.</li>
+      <li>SUCCEEDS and manifest.appcache file SAME =&gt; cached version  used.</li>
+      <li>SUCCEEDS and manifest.appcache file DIFFERENT =&gt; everything is reloaded</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>Another member of the group piped up. “Hi, I’m ApplicationCache,” he said, as he reached over to shake Dev’s hand. “I turn your offline experience from sucks-ass, to success. Just one extra file, and bosh! It works. No fuss, no ‘scripting’ necessary.” Yes, he did finger-quotes while saying ‘scripting.’ I’m gritting my teeth at this point, because I know he’s greatly exaggerating his abilities and the others don’t see it. However, if I call “bullshit” on it I’ll seem like the jerk.</p>
+
+<p>I felt bad for not doing anything on that completely real evening. It’s painful to see articles that praise ApplicationCache’s ease of use, written by people who’ve clearly only met him in passing. I must set the record straight: I’m here to tell you ApplicationCache is a douchebag.</p>
+
+<p>Now, I don’t mean he’s useless or should be avoided, you just have to be very careful when and how you work with him. If you get it wrong, the douchebaggery oozes through onto the end user. By reading through my own painful experiences with AppCache, you’ll know what to expect from AppCache and how to deal with it.</p>
+
+<hr />
+
+<h1 id="httpalistapartcomarticleapplication-cache-is-a-douchebaghttpalistapartcomarticleapplication-cache-is-a-douchebag"><a href="http://alistapart.com/article/application-cache-is-a-douchebag">http://alistapart.com/article/application-cache-is-a-douchebag</a></h1>
+
+<p><img src="http://dl.dropbox.com/u/18491046/Selection_004.png" alt="" /></p>
+
+<p>except this:</p>
+
+<h1 id="httpsgithubcomgr2mappcache-nannyhttpsgithubcomgr2mappcache-nanny"><a href="https://github.com/gr2m/appcache-nanny">https://github.com/gr2m/appcache-nanny</a></h1>
+
+<hr />
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">CACHE MANIFEST
+/
+/js/app.min.js
+/js/libs.min.js
+/css/style.min.css
+/index.html
+
+NETWORK:
+*
+http://*
+
+FALLBACK:
+/ /
+<span class="c"># VERSION 5asd1s</span></code></pre></div>
+
+<hr />
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&#39;utf-8&#39;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;apple-mobile-web-app-capable&quot;</span> <span class="na">content=</span><span class="s">&quot;yes&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;mobile-web-app-capable&quot;</span> <span class="na">content=</span><span class="s">&quot;yes&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Coconut<span class="nt">&lt;/title&gt;</span></code></pre></div>
+
+<hr />
+
+<h1 id="vision">Vision</h1>
+
+<ul>
+  <li>Deployment Script with Docker</li>
+  <li>Merge question format of Gooseberry/Coconut</li>
+  <li>Enable data capture for any Coconut form via SMS or Tablet</li>
+  <li>UI Refactor
+    <ul>
+      <li>Fork server side reporting and client side data collection UI</li>
+      <li>Strip out JQuery Mobile</li>
+      <li>Use a bootstrap template</li>
+    </ul>
+  </li>
+  <li>Consider Elastic Search and Kibana as new basis for reporting</li>
+</ul>
+
+<hr />
+
+<h1 id="blockspring">Blockspring</h1>
+
+<p><a href="https://www.youtube.com/watch?v=UD3a_Eqj5ew">https://www.youtube.com/watch?v=UD3a_Eqj5ew</a></p>
+
+<hr />
+
+<h1 id="dropbox-sdk">Dropbox SDK</h1>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;bHKasfYaEVYvAAANotRealTokenSoDontTryItOKkOBOeB1J3A5D2I0tQsIyg&quot;</span>
+<span class="n">dropbox_client</span> <span class="o">=</span> <span class="no">DropboxClient</span><span class="o">.</span><span class="n">new</span> <span class="n">access_token</span>
+
+<span class="n">csvs_required</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv_required</span><span class="o">|</span>
+  <span class="n">question_set</span> <span class="o">=</span> <span class="no">QuestionSet</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">csv_required</span><span class="o">[</span><span class="s2">&quot;question_set&quot;</span><span class="o">]</span><span class="p">)</span>
+  <span class="n">filename</span> <span class="o">=</span> <span class="n">csv_required</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;.csv&quot;</span>
+  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="n">question_set</span><span class="o">.</span><span class="n">csv_header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span> <span class="n">question_set</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="n">csv_required</span><span class="o">[</span><span class="s2">&quot;start_date&quot;</span><span class="o">]</span><span class="p">,</span><span class="n">csv_required</span><span class="o">[</span><span class="s2">&quot;end_date&quot;</span><span class="o">]</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="n">dropbox_client</span><span class="o">.</span><span class="n">put_file</span> <span class="n">filename</span><span class="p">,</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span><span class="kp">true</span>
+<span class="k">end</span></code></pre></div>
+
+<hr />
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/05/08/adam-elk/" data-toggle="tooltip" data-placement="top" title="adam-elk">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/05/22/josh-rat-pack/" data-toggle="tooltip" data-placement="top" title="josh-sinatra-i18n-daybreak">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/rocknrockers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/rocknrollers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">rocknrollers international</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>

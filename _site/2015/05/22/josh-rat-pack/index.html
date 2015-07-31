@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="informal show and tell time">
+
+    <title>josh-sinatra-i18n-daybreak - rocknrollers international</title>
+
+    <link rel="canonical" href="http://rocknrollers.international/2015/05/22/josh-rat-pack/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rocknrollers international</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/schedule/">schedule</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">about</a>
+                </li>
+                
+                <li>
+                    <a href="/participate/">participate</a>
+                </li>
+                
+                <li>
+                    <a href="/hall-of-fame/">hall of fame</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-08.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>josh-sinatra-i18n-daybreak</h1>
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by rocknrollers on May 22, 2015</span>
+                </div>
+            </div>
+        </div>
+        <span>
+            <a href='https://www.flickr.com/photos/oddsock/109594846'>photo source</a>
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>This will mark our 10th session. Thank you rocknrollers for always pitching in and rocking out.</p>
+
+<p>In other news, Adam is being awarded with a hall of fame badge. He is being promoted to Mick Jagger. Remember, with great power comes great responsibility.</p>
+
+<p>Really quickly</p>
+
+<ul>
+  <li>
+    <p><a href="http://i18next.com/">18next</a> - simple javascript library for translating your ui. Very flexible and very minimalist. When you look at the feature list and examples you’ll feel very confident that it will handle whatever language you can throw at it.</p>
+  </li>
+  <li>
+    <p><a href="http://sinatrarb.com">sinatra</a> - micro-framework for Ruby.</p>
+  </li>
+  <li>
+    <p><a href="http://propublica.github.io/daybreak/">daybreak</a> - impressive little keystore database.</p>
+  </li>
+</ul>
+
+<p>For this quick Sinatra demo we created a backend to handle bit.ly type requests. In English, if a submitted url is known, provide the token, shortened url, othewise, save the url and provide a random token. If a get request is made to a known token, then redirect. Easy peasy lemon squeezy.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;daybreak&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;sinatra/base&#39;</span>
+
+<span class="vg">$db</span> <span class="o">=</span> <span class="no">Daybreak</span><span class="o">::</span><span class="no">DB</span><span class="o">.</span><span class="n">new</span> <span class="s2">&quot;url.db&quot;</span>
+
+<span class="k">def</span> <span class="nf">random_string</span> 
+  <span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="p">)</span><span class="o">.</span><span class="n">shuffle</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="o">].</span><span class="n">join</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">UrlApp</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
+
+  <span class="n">post</span> <span class="s1">&#39;/shorten&#39;</span> <span class="k">do</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:url</span><span class="o">]</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">random_string</span>
+    
+    <span class="vg">$db</span><span class="o">.</span><span class="n">set!</span> <span class="n">token</span><span class="p">,</span> <span class="n">url</span>
+    
+    <span class="n">token</span>
+  <span class="k">end</span>
+
+  <span class="n">get</span> <span class="s1">&#39;/:token&#39;</span> <span class="k">do</span>
+    <span class="n">redirect</span> <span class="vg">$db</span><span class="o">[</span><span class="n">params</span><span class="o">[</span><span class="ss">:token</span><span class="o">]]</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></div>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/05/15/mike-coconut/" data-toggle="tooltip" data-placement="top" title="mike-coconut">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/06/01/schedule-update/" data-toggle="tooltip" data-placement="top" title="Schedule update">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/rocknrockers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/rocknrollers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">rocknrollers international</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>

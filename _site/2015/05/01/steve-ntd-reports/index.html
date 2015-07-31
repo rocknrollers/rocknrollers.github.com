@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="informal show and tell time">
+
+    <title>steve-ntd-reports - rocknrollers international</title>
+
+    <link rel="canonical" href="http://rocknrollers.international/2015/05/01/steve-ntd-reports/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rocknrollers international</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+                <li>
+                    <a href="/schedule/">schedule</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">about</a>
+                </li>
+                
+                <li>
+                    <a href="/participate/">participate</a>
+                </li>
+                
+                <li>
+                    <a href="/hall-of-fame/">hall of fame</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-05.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>steve-ntd-reports</h1>
+                    
+                    <h2 class="subheading">Lord of the pings: MySQL, security and a helpful wizard</h2>
+                    
+                    <span class="meta">Posted by rocknrollers on May 1, 2015</span>
+                </div>
+            </div>
+        </div>
+        <span>
+            <a href='https://www.flickr.com/photos/anirudhkoul/3804551632'>photo source</a>
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>This week Steve kindly walked us through the work he’s been doing on the NTD database system. His component is a rails application that creates reports for a tricky database situation.</p>
+
+<p>While he was explaining I had to google the following things and learned quite a bit.</p>
+
+<p><a href="http://mmonit.com/monit/">monit</a>
+Great tool for monitoring processes.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Pivot_table">Pivot tables</a>
+Way to aggregate data by columns.</p>
+
+<p><a href="http://www.jquery-steps.com/">jQuery Steps</a>
+Plugin for making wizards.</p>
+
+<p>Steve also talked about the difficulty of having a main application (drupal based) communicate with a secondary application (in rails) and juggle the authentication between the two of them.</p>
+
+<p>The solution goes a little something like this</p>
+
+<ol>
+  <li>
+    <p>An authenticated user on drupal has a link that contains an encrypted string, a “multipass token” at the end. The password to decrypt the token lives on the drupal server and on the rails server, so even though the user gets a link that looks like newserver.com/login/adASDadaDAsdas no one can tell what’s in the data. The string actually contains all the user’s information that the rails app needs to do it’s job.</p>
+  </li>
+  <li>
+    <p>Next the rails server gets the request with the token and attempts to decrypt it. If it successfully decrypts, and decrypts into a valid predetermined structure, then it’s considered a valid user created by the drupal server. Voila!</p>
+  </li>
+</ol>
+
+<p>The solution here was surprisingly simple and breathtakingly pragmatic, like most good solutions, I find. Steve says he learned the idea from EasyBI, another tool we’ve used in the past.</p>
+
+<p>Please let me know if I left out anything cool.</p>
+
+<p>Thanks for reading.</p>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/04/10/matt-generators/" data-toggle="tooltip" data-placement="top" title="matt-generators">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/05/08/adam-elk/" data-toggle="tooltip" data-placement="top" title="adam-elk">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/rocknrockers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/rocknrollers">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">rocknrollers international</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>
